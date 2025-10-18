@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/[^.]+",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "VITE_TMDB_API_KEY": "@vite_tmdb_api_key",
+    "VITE_TMDB_BASE_URL": "https://api.themoviedb.org/3",
+    "VITE_TMDB_IMAGE_BASE_URL": "https://image.tmdb.org/t/p"
+  }
+}

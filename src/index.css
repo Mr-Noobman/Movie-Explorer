@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-950 text-gray-100 font-sans antialiased transition-colors duration-300;
+  }
+  
+  body.light {
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  /* Performance optimizations */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+  }
+
+  img {
+    content-visibility: auto;
+    contain-intrinsic-size: 500px 750px;
+  }
+
+  /* Light mode specific styles */
+  body.light * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl transition-all duration-300;
+  }
+  
+  body.light .glass-card {
+    @apply bg-white/90 border-gray-200 shadow-lg;
+  }
+  
+  /* Neon glow effect */
+  .neon-glow {
+    @apply shadow-[0_0_15px_rgba(0,217,255,0.5)];
+  }
+  
+  /* Focus states for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-neon-blue focus:ring-offset-2 focus:ring-offset-gray-950;
+  }
+
+  body.light .focus-ring {
+    @apply focus:ring-offset-white;
+  }
+
+  /* Light mode text colors */
+  body.light h1,
+  body.light h2,
+  body.light h3,
+  body.light h4,
+  body.light h5,
+  body.light h6 {
+    @apply text-gray-900;
+  }
+
+  body.light p,
+  body.light span {
+    @apply text-gray-700;
+  }
+
+  /* Light mode for inputs */
+  body.light input,
+  body.light select,
+  body.light textarea {
+    @apply bg-white border-gray-300 text-gray-900 placeholder-gray-500;
+  }
+
+  body.light input:focus,
+  body.light select:focus,
+  body.light textarea:focus {
+    @apply bg-white border-neon-blue;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* GPU acceleration for smooth scrolling */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Smooth scrolling */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}
